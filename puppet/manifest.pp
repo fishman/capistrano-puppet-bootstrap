@@ -6,6 +6,19 @@ package { ["libpq-dev", "libxslt-dev"]:
 include stdlib
 include augeas
 include sudo
+sudo::conf { 'sudoers':
+  priority => 10,
+  content  => "%sudo   ALL=(ALL:ALL) ALL\n",
+}
+sudo::conf { 'admins':
+  priority => 10,
+  content  => "%admin  ALL=(ALL) ALL\n",
+
+  # Allow members of group sudo to execute any command
+  
+
+}
+  
 include apt
 include nodejs
 include postgresql

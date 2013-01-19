@@ -22,11 +22,17 @@ default_run_options[:pty] = true
 # if you want to clean up old releases on each deploy uncomment this:
 after "deploy:setup", :setup_group
 task :setup_group do
-  try_sudo "gem install bundler"
+  try_sudo "gem install bundler thin"
+  try_sudo "thin install"
   try_sudo "chown -R :#{group} #{deploy_to}"
   try_sudo "chmod -R g+s #{deploy_to}"
 end
+# after "deploy:restart", "deploy:cleanup"
 
+# if you're still using the script/reaper helper you will need
+# these http://github.com/rails/irs_process_scripts
+
+# If you are using Passenger mod_rails uncomment this:
 namespace :deploy do
   task :start do
     run "#{try_sudo} service thin start"
@@ -38,7 +44,7 @@ namespace :deploy do
     run "#{try_sudo} service thin restart"
   end
 
-  task :after_update_code, :roles => :app do
+  after 'deploy:update_code' do
     run "ln -nfs #{deploy_to}/shared/system/database.yml #{release_path}/config/database.yml"
   end
 end

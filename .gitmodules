@@ -16,3 +16,6 @@
 [submodule "puppet/modules/nginx"]
 	path = puppet/modules/nginx
 	url = https://github.com/jfryman/puppet-nginx
+[submodule "puppet/modules/sudo"]
+	path = puppet/modules/sudo
+	url = https://github.com/saz/puppet-sudo.git
