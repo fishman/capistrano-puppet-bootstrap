@@ -58,7 +58,7 @@ namespace :bootstrap do
     upload("puppet.tgz","/home/#{user}",:via => :scp)
 
     # Untar the puppet directory, and place at /etc/puppet -- the default location for manifests/modules
-    run("tar xzf puppet.tgz")
+    run("tar xzf puppet.tgz ; rm puppet.tgz")
     try_sudo("rm -rf /etc/puppet")
     try_sudo("mv /home/#{user}/puppet/ /etc/puppet")
 
@@ -79,7 +79,7 @@ namespace :puppet do
     upload("puppet.tgz","/home/#{user}",:via => :scp)
 
     # Untar the puppet directory, and place at /etc/puppet -- the default location for manifests/modules
-    run("tar xzf puppet.tgz")
+    run("tar xzf puppet.tgz ; rm puppet.tgz")
     try_sudo("rm -rf /etc/puppet")
     try_sudo("mv puppet/ /etc/puppet")
 

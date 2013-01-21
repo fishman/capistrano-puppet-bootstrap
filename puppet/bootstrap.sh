@@ -12,8 +12,8 @@ curl -L https://get.rvm.io | sudo bash -s stable
 source /etc/profile.d/rvm.sh
 
 # Install Ruby 1.9.3-125
-rvmsudo rvm install 1.9.3-p125
-rvmsudo rvm alias create default 1.9.3-p125
+rvmsudo rvm install 1.9.3-p327
+rvmsudo rvm alias create default 1.9.3-p327
 
 source /etc/profile.d/rvm.sh
 
